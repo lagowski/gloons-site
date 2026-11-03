@@ -1,10 +1,11 @@
-// Theme toggle: Light -> Dark -> System, saved in localStorage("theme").
+// Theme toggle: System -> (opposite of the OS) -> (same as the OS) -> System,
+// so the first click always visibly changes the page. Saved in localStorage("theme").
 // The inline script in <head> applies the saved choice before first paint;
 // "System" leaves data-theme unset so the prefers-color-scheme block decides.
 (function () {
   var KEY = "theme";
-  var ORDER = ["light", "dark", "system"];
   var root = document.documentElement;
+  var osDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function saved() {
@@ -40,7 +41,8 @@
   }
 
   function next() {
-    var pref = (current = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length]);
+    var order = osDark && osDark.matches ? ["light", "dark", "system"] : ["dark", "light", "system"];
+    var pref = (current = order[(order.indexOf(current) + 1) % order.length]);
     try {
       localStorage.setItem(KEY, pref);
     } catch (e) {}
