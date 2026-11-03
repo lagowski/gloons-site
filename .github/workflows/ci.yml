@@ -1,0 +1,43 @@
+# Basic CI for the public Gloons site (gloons.lagowski.es + the Pages media host).
+#
+# Why this repo has CI but no fleet AI gate (owner decision 2026-11-03): gloons-site is PUBLIC,
+# and must stay public — Instagram/Facebook fetch hosted media from
+# lagowski.github.io/gloons-site/media/ (gloons-studio gloons/publisher/hosting.py). A public repo
+# cannot call the private pr-review-gate canon's reusable workflows (gate#339: zero-job runs), and
+# fork PRs must never reach the self-hosted claude-bridge pool. Same posture as sciencegloon-site.
+#
+# GITHUB-HOSTED ONLY. Anyone can open a fork PR here, so never move this job to a self-hosted
+# label: a fork's code would run on our hardware. Hosted minutes are free for public repos.
+#
+# The check is NOT required by a ruleset on purpose: gloons-studio pushes media commits straight
+# to main several times a day, and a required status check also rejects direct pushes.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    # Media commits (hosted Reels/images, daily prune) carry no code; skip them.
+    paths-ignore: ['media/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'pytest==8.3.4'
+      - run: python -m pytest tests/ -q
