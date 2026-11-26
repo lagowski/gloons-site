@@ -1,8 +1,23 @@
-# gloons-site
+<p align="center"><a href="https://lagowski.github.io/gloons-site/"><picture>
+  <source media="(prefers-color-scheme: light)" srcset="docs/images/banner-light.png">
+  <img alt="gloons-site: The Gloons channel's public pages and the media host for its Instagram and Facebook posts." src="docs/images/banner.png" width="100%">
+</picture></a></p>
+
+<p align="center"><b>The Gloons channel's public pages and the media host for its Instagram and Facebook posts.</b><br>
+<a href="#quick-start">Install</a> · <a href="#how-it-works">How it works</a></p>
+
+<p align="center"><img alt="HTML: static" src="https://img.shields.io/badge/HTML-static-c6f432?style=flat-square&labelColor=1a1a1a"> <img alt="GitHub Pages: live" src="https://img.shields.io/badge/GitHub%20Pages-live-c6f432?style=flat-square&labelColor=1a1a1a"> <img alt="tests: 12" src="https://img.shields.io/badge/tests-12-c6f432?style=flat-square&labelColor=1a1a1a"> <img alt="build: none" src="https://img.shields.io/badge/build-none-c6f432?style=flat-square&labelColor=1a1a1a"></p>
 
 The public pages of the Gloons channel (home, privacy policy, terms, the TikTok authorization callback)
 and the media host for its Instagram and Facebook posts. Served by GitHub Pages at
 <https://lagowski.github.io/gloons-site/>.
+
+<p align="center"><img alt="The home page, served from a clone with python3 -m http.server (the same files GitHub Pages serves)." src="docs/images/demo.png" width="900"></p>
+<p align="center"><sub>The home page, served from a clone with python3 -m http.server (the same files GitHub Pages serves).</sub></p>
+
+## How it works
+
+<p align="center"><img alt="How it works: the stages of the pipeline, with the step that matters highlighted" src="docs/images/how-it-works.png" width="100%"></p>
 
 ## Quick start
 
