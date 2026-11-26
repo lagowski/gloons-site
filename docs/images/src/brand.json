@@ -1,0 +1,19 @@
+{
+  "product": "gloons-site (the Gloons channel's public pages and media host)",
+  "extracted": "2026-11-26",
+  "kind": "frontend: design extracted from the repo",
+  "sources": {
+    "colours": "style.css :root (light: bg #fbf8f3, fg #1d1b19, muted #6b645c, accent #e2572b, card #fff, line #e8e1d7) and :root[data-theme=dark] (bg #141317, fg #e6e4df, muted #a9a6a0, card #1c1b20, line #2c2a31)",
+    "fonts": "style.css body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; brand and headings at 800. No web font (the PNGs use the render machine's system-ui face). File names are set in the system monospace",
+    "logo": "logo-120.png (the Gloons mark on a rounded tile, radius 10) + 'Gloons' at 800, as in the header of index.html",
+    "components": "header (.brand, nav, .theme-toggle pill), h1, .lead, .card (radius 14, 1px line)"
+  },
+  "added_for_this_readme": {
+    "accent_text": "#f0764c on dark and #b8431d on light: the accent lightened/darkened so that small orange text keeps its contrast (tests/test_theme.py holds the site to the same rule)",
+    "numbered_steps": "an outlined orange circle with a number, for the three steps of the media path"
+  },
+  "banner_concept": "The site's own page with its two jobs side by side: the four pages (what each is for, and that their URLs are registered) and the media host (a file is committed, Pages serves it, Instagram and Facebook fetch the URL).",
+  "diagram_concept": "Two lanes into main: the pages through a pull request and CI, the media through the publishing pipeline's commits; GitHub Pages serves both; the media URL path is the accent.",
+  "fictional_data": "the media file name 3f9c1e07ab52d684.mp4 is invented (same shape as the real names)",
+  "assets": {"banner": "docs/images/src/banner.html (?theme=light)", "diagram": "docs/images/src/diagram.html"}
+}
