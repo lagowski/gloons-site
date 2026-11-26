@@ -4,6 +4,8 @@ The public pages of the Gloons channel (home, privacy policy, terms, the TikTok 
 and the media host for its Instagram and Facebook posts. Served by GitHub Pages at
 <https://lagowski.github.io/gloons-site/>.
 
+![gloons-site](docs/images/hero.png)
+
 ## Quick start
 
 ```
